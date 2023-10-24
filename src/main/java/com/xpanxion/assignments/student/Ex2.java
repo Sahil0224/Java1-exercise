@@ -6,8 +6,9 @@ public class Ex2 {
     public static void main(String[] args)
     {
         Scanner console = new Scanner(System.in);
-        System.out.println("Enter a string: ");
+        System.out.print("Enter a string: ");
         String name = console.nextLine();
+        console.close();
         int upperCase = 0;
         for (int  i = 0; i < name.length(); i++)
         {
