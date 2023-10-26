@@ -1,6 +1,8 @@
 package com.xpanxion.assignments.student;
 import java.text.NumberFormat;
 import java.util.*;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 public class JavaTwo {
     
     public void ex1()
@@ -135,21 +137,15 @@ public class JavaTwo {
 
     public void ex7()
     {
-        // System.out.println("Student 2: ex7.");
+        System.out.println("Student 2: ex7.");
 
-        // var personList = Arrays.asList 
-        // (
-        //     new Person(1, "Peter", "Jones"),
-        //     new Person(2, "John", "Smith"),
-        //     new Person(3, "Sue", "Anderson")
-        // );
-        
-        // var newPersonList = personList.stream().map(personList.removeAll("xxx"));
-        // for (Person p : newPersonList) 
-        // {
-        //     System.out.println(p);
-        // }
-
+        var personList = Arrays.asList 
+        (
+            new Person(1, "Peter", "Jones"),
+            new Person(2, "John", "Smith"),
+            new Person(3, "Sue", "Anderson")
+        );
+        personList.stream().map(person -> new Person(person.getId(), person.getFirstName(), "xxx")).forEach(System.out::println);
     }
 
 
@@ -157,17 +153,53 @@ public class JavaTwo {
     {
         System.out.println("Student 2: ex8.");
 
+        var personList = Arrays.asList
+        (
+            new Person(1, "Charlie", "Jones"),
+            new Person(2, "Zoey", "Smith"),
+            new Person(3, "Adam", "Anderson")
+        );
+        personList.stream().sorted(Comparator.comparing(Person::getFirstName)).forEach(System.out::println);
+
     }
 
     public void ex9()
     {
         System.out.println("Student 2: ex9.");
 
+        var personList = Arrays.asList
+        (
+            new Person(1, "Charlie", "Jones"),
+            new Person(2, "Zoey", "Smith"),
+            new Person(3, "Adam", "Anderson")
+        );
+
+        for (Person p: personList)
+        {
+            if(p.getLastName().equals("Smith"))
+            {
+                System.out.println(p);
+            }
+        }
     }
 
-    public void ex10()
+    public void ex10 () throws InterruptedException
     {
         System.out.println("Student 2: ex10.");
 
+        CatQueue queue = new CatQueue();
+
+        queue.enqueue(new Cat("Alice"));
+        queue.enqueue(new Cat("Bob"));
+        queue.enqueue(new Cat("Charlie"));
+        queue.enqueue(new Cat("Dan"));
+
+        while(!queue.isEmpty())
+        {
+            queue.printQueue();
+            queue.dequeue();
+        }
+
+        Thread.sleep(3000);
     }
 }
