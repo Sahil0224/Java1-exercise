@@ -3,14 +3,14 @@ package com.xpanxion.assignments.student;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Invoice {
-    int id;
+import com.xpanxion.assignments.Base;
 
+public class Invoice extends Base{
     List<Product> products = new ArrayList<>();
 
     public Invoice (int id)
     {
-        this.id = id;
+        super(id);
     }
 
     public void addProduct(Product product)
